@@ -8,7 +8,18 @@ import OurProducts from '../components/OurProducts'
 import Featured from '../components/Featured'
 import TrustCompany from '../components/TrustCompany'
 
-const Home = ({ addToWishlist, addToCartItems, productsAPIs, calculateCountDown, countDown }) => {
+const Home = ({
+  addToWishlist,
+  addToCartItems,
+  productsAPIs,
+  setProductsAPIs,
+  calculateCountDown,
+  countDown,
+  fetchProducts,
+  handleViewMoreProducts,
+  getVisibleItems,
+  visibleItemCount
+}) => {
   return (
     <div>
       <div className='w-full h-full flex item-center justify-center '>
@@ -21,8 +32,13 @@ const Home = ({ addToWishlist, addToCartItems, productsAPIs, calculateCountDown,
         addToWishlist={addToWishlist}
         addToCartItems={addToCartItems}
         productsAPIs={productsAPIs}
+        setProductsAPIs={setProductsAPIs}
         calculateCountDown={calculateCountDown}
         countDown={countDown}
+        fetchProducts={fetchProducts}
+        handleViewMoreProducts={handleViewMoreProducts}
+        getVisibleItems={getVisibleItems}
+        visibleItemCount={visibleItemCount}
       />
       <Category />
       <ProductThisMonth />

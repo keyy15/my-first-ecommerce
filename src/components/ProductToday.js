@@ -2,30 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { AiTwotoneStar } from 'react-icons/ai'
 import { GrFavorite, GrView } from 'react-icons/gr'
-import axios from 'axios'
 
 const ProductToday = ({
   addToWishlist,
   addToCartItems,
   productsAPIs,
+  setProductsAPIs,
+  fetchProducts,
   calculateCountDown,
-  countDown
+  countDown,
+  getVisibleItems,
+  handleViewMoreProducts,
+  visibleItemCount
 }) => {
-  const [products, setProducts] = useState([])
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get(
-        'http://localhost:90/php-backend/get-product.php'
-      )
-      setProducts(response.data)
-    } catch (error) {
-      console.error('Error fetching products ', error)
-    }
-  }
+  const [isHovered, setIsHovered] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   useEffect(() => {
     fetchProducts()
     calculateCountDown()
-
     // Start the countdown interval
     const intervalId = setInterval(() => {
       calculateCountDown()
@@ -33,59 +28,26 @@ const ProductToday = ({
     return () => clearInterval(intervalId)
   }, [])
 
-  const [isHovered, setIsHovered] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [showAll, setShowAll] = useState(false)
-  const [visibleItemCount, setVisibleItemCount] = useState(4)
-
   const handleToFavorite = () => {
-    const itemAddToFavorite = products[currentIndex]
+    const itemAddToFavorite = productsAPIs[currentIndex]
     console.log(addToWishlist(itemAddToFavorite))
   }
 
   const handleAddToCart = () => {
-    const itemToCart = products[currentIndex]
+    const itemToCart = productsAPIs[currentIndex]
     addToCartItems(itemToCart)
-  }
-
-  const getVisibleItems = () => {
-    if (showAll) {
-      return products
-    } else {
-      return products.slice(0, visibleItemCount)
-    }
-  }
-
-  const handleViewMoreProducts = () => {
-    if (visibleItemCount < products.length) {
-      setProducts(prvProducts => {
-        const slicedItems = prvProducts.slice(0, visibleItemCount)
-        const additionalItems = prvProducts.slice(
-          visibleItemCount,
-          visibleItemCount + products.length
-        )
-
-        const viewMoreProducts = slicedItems.concat(additionalItems)
-
-        setVisibleItemCount(prevCount => prevCount + 4)
-
-        return viewMoreProducts
-      })
-    } else {
-      setVisibleItemCount(4)
-    }
   }
 
   const handleNextPrv = () => {
     setCurrentIndex(
       prevIndex =>
-        (prevIndex + 1) % Math.ceil(products.length / visibleItemCount)
+        (prevIndex + 1) % Math.ceil(productsAPIs.length / visibleItemCount)
     )
   }
 
   const handleBackPrv = () => {
     setCurrentIndex(prevIndex =>
-      prevIndex === 0 ? products.length - 1 : prevIndex - 1
+      prevIndex === 0 ? productsAPIs.length - 1 : prevIndex - 1
     )
   }
 
@@ -193,7 +155,9 @@ const ProductToday = ({
             className='bg-[#DB4444] px-12 py-3 text-sm text-white rounded font-mono'
             onClick={handleViewMoreProducts}
           >
-            {visibleItemCount < products.length ? 'View More Products' : 'Hide'}
+            {visibleItemCount < productsAPIs.length
+              ? 'View More Products'
+              : 'Hide'}
           </button>
         </div>
       </div>

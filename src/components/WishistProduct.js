@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { MdDelete } from 'react-icons/md'
 import axios from 'axios'
 
-const WishlistProduct = ({ wishListItems }) => {
+const WishlistProduct = ({ wishListItems, handleViewMoreProducts }) => {
   const [isHovered, setIsHovered] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showAll, setShowAll] = useState(false)
@@ -29,26 +29,6 @@ const WishlistProduct = ({ wishListItems }) => {
       return products
     } else {
       return products.slice(0, visibleItemCount)
-    }
-  }
-
-  const handleViewMoreProducts = () => {
-    if (visibleItemCount < products.length) {
-      setProducts(prvProducts => {
-        const slicedItems = prvProducts.slice(0, visibleItemCount)
-        const additionalItems = prvProducts.slice(
-          visibleItemCount,
-          visibleItemCount + products.length
-        )
-
-        const viewMoreProducts = slicedItems.concat(additionalItems)
-
-        setVisibleItemCount(prevCount => prevCount + 4)
-
-        return viewMoreProducts
-      })
-    } else {
-      setVisibleItemCount(4)
     }
   }
 

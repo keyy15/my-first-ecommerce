@@ -17,20 +17,19 @@ import AddToCart from './pages/AddToCart'
 import axios from 'axios'
 
 const App = () => {
-
   //fetch data from api
   const [productsAPIs, setProductsAPIs] = useState([])
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(
-          'http://localhost:90/php-backend/get-product.php'
-        )
-        setProductsAPIs(response.data)
-      } catch (error) {
-        console.error('Error fetching products ', error)
-      }
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(
+        'http://localhost:90/php-backend/get-product.php'
+      )
+      setProductsAPIs(response.data)
+    } catch (error) {
+      console.error('Error fetching products ', error)
     }
+  }
+  useEffect(() => {
     fetchProducts()
   }, [])
 
@@ -70,6 +69,38 @@ const App = () => {
     setCountDown({ days, hours, minutes, seconds })
   }
 
+  //view product
+  const [visibleItemCount, setVisibleItemCount] = useState(4)
+  const handleViewMoreProducts = () => {
+    if (visibleItemCount < productsAPIs.length) {
+      setProductsAPIs(prvProducts => {
+        const slicedItems = prvProducts.slice(0, visibleItemCount)
+        const additionalItems = prvProducts.slice(
+          visibleItemCount,
+          visibleItemCount + productsAPIs.length
+        )
+
+        const viewMoreProducts = slicedItems.concat(additionalItems)
+
+        setVisibleItemCount(prevCount => prevCount + 4)
+
+        return viewMoreProducts
+      })
+    } else {
+      setVisibleItemCount(4)
+    }
+  }
+
+  //get visibleitem
+  const [showAll, setShowAll] = useState(false)
+  const getVisibleItems = () => {
+    if (showAll) {
+      return productsAPIs
+    } else {
+      return productsAPIs.slice(0, visibleItemCount)
+    }
+  }
+
   return (
     <Router>
       <TopNavbar />
@@ -82,8 +113,13 @@ const App = () => {
               addToWishlist={addToWishlist}
               addToCartItems={addToCartItems}
               productsAPIs={productsAPIs}
+              setProductsAPIs={setProductsAPIs}
+              fetchProducts={fetchProducts}
               calculateCountDown={calculateCountDown}
               countDown={countDown}
+              handleViewMoreProducts={handleViewMoreProducts}
+              visibleItemCount={visibleItemCount}
+              getVisibleItems={getVisibleItems}
             />
           }
         />
@@ -97,6 +133,8 @@ const App = () => {
             <Wishlist
               wishListItems={wishListItems}
               productsAPIs={productsAPIs}
+              handleViewMoreProducts={handleViewMoreProducts}
+              getVisibleItems={getVisibleItems}
             />
           }
         />
