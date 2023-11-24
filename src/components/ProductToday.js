@@ -17,6 +17,7 @@ const ProductToday = ({
 }) => {
   const [isHovered, setIsHovered] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [seletedItems, setSeletedItems] = useState([])
 
   useEffect(() => {
     fetchProducts()
@@ -28,9 +29,23 @@ const ProductToday = ({
     return () => clearInterval(intervalId)
   }, [])
 
-  const handleToFavorite = () => {
+  const handleToFavorite = (index) => {
     const itemAddToFavorite = productsAPIs[currentIndex]
-    console.log(addToWishlist(itemAddToFavorite))
+    addToWishlist(itemAddToFavorite)
+
+    const selectedItem  = productsAPIs[index]
+    const isSelected  = productsAPIs.some(item => item.id === selectedItem.id)
+
+    // if(!isSelected){
+    //   setSeletedItems(prvSeletedItems => [...prvSeletedItems, selectedItem])
+    // }else{
+    //   setSeletedItems(prvSeletedItems => {
+    //     prvSeletedItems.filter(item => item.id !== selectedItem.id)
+    //   })
+    // }
+
+    console.log(isSelected)
+    
   }
 
   const handleAddToCart = () => {
@@ -58,6 +73,9 @@ const ProductToday = ({
           <p className='text-[#DB4444] border-r-[18px] border-[#DB4444] rounded'></p>
           <p className='text-[#DB4444] text-sm font-semibold font-mono flex items-center'>
             Today's
+          </p>
+          <p className='text-[#DB4444] text-sm font-semibold font-mono flex items-center'>
+            {seletedItems.pro_name}
           </p>
         </div>
         <div className='flex items-center justify-between py-2'>
@@ -118,7 +136,7 @@ const ProductToday = ({
                 </p>
                 <p
                   className='absolute top-2 right-2 font-mono bg-[#FFFFFF] text-black p-2 text-sm rounded-full cursor-pointer hover:bg-[#DB4444]'
-                  onClick={handleToFavorite}
+                  onClick={() => handleToFavorite(index)}
                 >
                   <GrFavorite className='hover:text-white' />
                 </p>
