@@ -4,7 +4,13 @@ import { AiTwotoneStar } from 'react-icons/ai'
 import { GrFavorite, GrView } from 'react-icons/gr'
 import axios from 'axios'
 
-const ProductToday = ({ addToWishlist, addToCartItems }) => {
+const ProductToday = ({
+  addToWishlist,
+  addToCartItems,
+  productsAPIs,
+  calculateCountDown,
+  countDown
+}) => {
   const [products, setProducts] = useState([])
   const fetchProducts = async () => {
     try {
@@ -31,17 +37,10 @@ const ProductToday = ({ addToWishlist, addToCartItems }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showAll, setShowAll] = useState(false)
   const [visibleItemCount, setVisibleItemCount] = useState(4)
-  const [countDown, setCountDown] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
-  })
 
   const handleToFavorite = () => {
-    const itemToAdd = products[currentIndex]
-    addToWishlist(itemToAdd)
-    fetchProducts()
+    const itemAddToFavorite = products[currentIndex]
+    console.log(addToWishlist(itemAddToFavorite))
   }
 
   const handleAddToCart = () => {
@@ -88,23 +87,6 @@ const ProductToday = ({ addToWishlist, addToCartItems }) => {
     setCurrentIndex(prevIndex =>
       prevIndex === 0 ? products.length - 1 : prevIndex - 1
     )
-  }
-
-  const calculateCountDown = () => {
-    const now = new Date()
-    const endOfDay = new Date(now)
-
-    endOfDay.setHours(23, 59, 59, 999)
-
-    const timeDiff = endOfDay - now
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24))
-    const hours = Math.floor(
-      (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    )
-    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))
-    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000)
-
-    setCountDown({ days, hours, minutes, seconds })
   }
 
   return (

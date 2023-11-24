@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { MdDelete } from 'react-icons/md'
 import axios from 'axios'
 
-const WishlistProduct = () => {
+const WishlistProduct = ({ wishListItems }) => {
   const [isHovered, setIsHovered] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showAll, setShowAll] = useState(false)
   const [visibleItemCount, setVisibleItemCount] = useState(8)
   const [products, setProducts] = useState([])
 
-  const fetchProducts = async () => {init
+  const fetchProducts = async () => {
     try {
       const response = await axios.get(
         'http://localhost:90/php-backend/get-product.php'
@@ -22,7 +22,7 @@ const WishlistProduct = () => {
 
   useEffect(() => {
     fetchProducts()
-  },[])
+  }, [])
 
   const getVisibleItems = () => {
     if (showAll) {
@@ -57,10 +57,11 @@ const WishlistProduct = () => {
       <div className='w-[80%] h-full flex flex-col gap-4'>
         <div className='flex gap-4 h-[40px]'></div>
         <div className='flex items-center justify-between py-2'>
-          <h4 className='text-xl font-semibold'>Wishlist (4)</h4>
+          <h4 className='text-xl font-semibold'>Wishlist (0)</h4>
           <h4 className='text-sm border border-[#808080] px-12 py-4 rounded-md text-black cursor-pointer'>
             Move all to bag
           </h4>
+          <h4>Hello</h4>
         </div>
         <div className='w-full h-full grid grid-cols-4 gap-8 mt-10'>
           {getVisibleItems().map((item, index) => (

@@ -8,7 +8,7 @@ import OurProducts from '../components/OurProducts'
 import Featured from '../components/Featured'
 import TrustCompany from '../components/TrustCompany'
 
-const Home = ({ addToWishlist, addToCartItems }) => {
+const Home = ({ addToWishlist, addToCartItems, productsAPIs, calculateCountDown, countDown }) => {
   return (
     <div>
       <div className='w-full h-full flex item-center justify-center '>
@@ -20,6 +20,9 @@ const Home = ({ addToWishlist, addToCartItems }) => {
       <ProductToday
         addToWishlist={addToWishlist}
         addToCartItems={addToCartItems}
+        productsAPIs={productsAPIs}
+        calculateCountDown={calculateCountDown}
+        countDown={countDown}
       />
       <Category />
       <ProductThisMonth />
