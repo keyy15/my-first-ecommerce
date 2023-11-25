@@ -103,9 +103,9 @@ const App = () => {
 
   //handle remove item add to favorite product
   const handleDeleteFromWishlist = (index, value) => {
-
-    console.log(123)
-
+    const updatedWishlist = [...wishListItems]
+    updatedWishlist.splice(index, 1)
+    setWishlistItems(updatedWishlist)
   }
 
   return (
