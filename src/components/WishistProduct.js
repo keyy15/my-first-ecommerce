@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { MdDelete } from 'react-icons/md'
+import { BsFillCartXFill } from 'react-icons/bs'
 
 const WishlistProduct = ({
   wishListItems,
@@ -21,8 +22,9 @@ const WishlistProduct = ({
   return (
     <div className='w-full h-full flex items-center justify-center mt-10'>
       {wishListItems.length === 0 ? (
-        <div className='w-[80%] h-[340px] flex items-center justify-center'>
-          <p>No Favorite Item</p>
+        <div className='w-[80%] h-[340px] flex items-center justify-center gap-8 text-2xl'>
+          <BsFillCartXFill className='text-7xl bg-[#DB4444] text-white rounded-xl p-2' />
+          <p className='p-2 rounded-xl border px-8'>No Favorite Item</p>
         </div>
       ) : (
         <div className='w-[80%] h-full flex flex-col gap-4'>
@@ -59,8 +61,11 @@ const WishlistProduct = ({
                   <p className='absolute top-2 left-2 font-mono bg-[#DB4444] text-white px-3 py-1 text-sm rounded'>
                     -{item.pro_dis}%
                   </p>
-                  <p className='absolute top-2 right-2 font-mono bg-[#FFFFFF] text-black p-2 cursor-pointer text-sm rounded-full hover:text-[#DB4444]'>
-                    <MdDelete onClick={() => handleDeleteFromWishlist(index)} />
+                  <p
+                    onClick={() => handleDeleteFromWishlist(index)}
+                    className='absolute top-2 right-2 font-mono bg-[#FFFFFF] text-black p-2 cursor-pointer text-sm rounded-full hover:text-[#DB4444]'
+                  >
+                    <MdDelete />
                   </p>
                   <p
                     className='absolute bottom-0 text-center bg-black text-white w-full rounded-b p-1 cursor-pointer text-sm'

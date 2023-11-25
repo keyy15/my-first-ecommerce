@@ -12,7 +12,8 @@ const ProductToday = ({
   countDown,
   getVisibleItems,
   handleViewMoreProducts,
-  visibleItemCount
+  visibleItemCount,
+  wishListItems
 }) => {
   const [isHovered, setIsHovered] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
