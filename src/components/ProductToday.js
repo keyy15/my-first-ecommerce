@@ -7,7 +7,6 @@ const ProductToday = ({
   addToWishlist,
   addToCartItems,
   productsAPIs,
-  setProductsAPIs,
   fetchProducts,
   calculateCountDown,
   countDown,
@@ -29,23 +28,9 @@ const ProductToday = ({
     return () => clearInterval(intervalId)
   }, [])
 
-  const handleToFavorite = (index) => {
-    const itemAddToFavorite = productsAPIs[currentIndex]
+  const handleToFavorite = index => {
+    const itemAddToFavorite = productsAPIs[index]
     addToWishlist(itemAddToFavorite)
-
-    const selectedItem  = productsAPIs[index]
-    const isSelected  = productsAPIs.some(item => item.id === selectedItem.id)
-
-    // if(!isSelected){
-    //   setSeletedItems(prvSeletedItems => [...prvSeletedItems, selectedItem])
-    // }else{
-    //   setSeletedItems(prvSeletedItems => {
-    //     prvSeletedItems.filter(item => item.id !== selectedItem.id)
-    //   })
-    // }
-
-    console.log(isSelected)
-    
   }
 
   const handleAddToCart = () => {

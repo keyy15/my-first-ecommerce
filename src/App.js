@@ -101,6 +101,13 @@ const App = () => {
     }
   }
 
+  //handle remove item add to favorite product
+  const handleDeleteFromWishlist = (index, value) => {
+
+    console.log(123)
+
+  }
+
   return (
     <Router>
       <TopNavbar />
@@ -135,6 +142,7 @@ const App = () => {
               productsAPIs={productsAPIs}
               handleViewMoreProducts={handleViewMoreProducts}
               getVisibleItems={getVisibleItems}
+              handleDeleteFromWishlist={handleDeleteFromWishlist}
             />
           }
         />

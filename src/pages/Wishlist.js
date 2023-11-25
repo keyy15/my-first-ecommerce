@@ -2,10 +2,10 @@ import React from 'react'
 import WishistProduct from '../components/WishistProduct'
 import JustForYou from '../components/JustForYou'
 
-const Wishlist = () => {
+const Wishlist = ({wishListItems, handleDeleteFromWishlist}) => {
   return (
     <div>
-      <WishistProduct />
+      <WishistProduct wishListItems={wishListItems} handleDeleteFromWishlist={handleDeleteFromWishlist}/>
       <JustForYou />
     </div>
   )

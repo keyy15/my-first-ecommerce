@@ -18,7 +18,8 @@ const Home = ({
   fetchProducts,
   handleViewMoreProducts,
   getVisibleItems,
-  visibleItemCount
+  visibleItemCount,
+  wishListItems
 }) => {
   return (
     <div>
@@ -39,6 +40,7 @@ const Home = ({
         handleViewMoreProducts={handleViewMoreProducts}
         getVisibleItems={getVisibleItems}
         visibleItemCount={visibleItemCount}
+        wishListItems={wishListItems}
       />
       <Category />
       <ProductThisMonth />
