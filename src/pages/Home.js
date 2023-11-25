@@ -30,7 +30,6 @@ const Home = ({
         </div>
       </div>
       <ProductToday
-        wishListItems={wishListItems}
         addToWishlist={addToWishlist}
         addToCartItems={addToCartItems}
         productsAPIs={productsAPIs}
@@ -41,6 +40,7 @@ const Home = ({
         handleViewMoreProducts={handleViewMoreProducts}
         getVisibleItems={getVisibleItems}
         visibleItemCount={visibleItemCount}
+        wishListItems={wishListItems}
       />
       <Category />
       <ProductThisMonth />

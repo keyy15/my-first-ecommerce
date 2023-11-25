@@ -127,6 +127,7 @@ const App = () => {
               handleViewMoreProducts={handleViewMoreProducts}
               visibleItemCount={visibleItemCount}
               getVisibleItems={getVisibleItems}
+              wishListItem={wishListItems}
             />
           }
         />

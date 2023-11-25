@@ -40,16 +40,11 @@ const ProductToday = ({
   }
 
   const handleNextPrv = () => {
-    setCurrentIndex(
-      prevIndex =>
-        (prevIndex + 1) % Math.ceil(productsAPIs.length / visibleItemCount)
-    )
+    alert("Next")
   }
 
   const handleBackPrv = () => {
-    setCurrentIndex(prevIndex =>
-      prevIndex === 0 ? productsAPIs.length - 1 : prevIndex - 1
-    )
+    alert("Back")
   }
 
   return (
@@ -121,7 +116,7 @@ const ProductToday = ({
                   -{item.pro_dis}%
                 </p>
                 <p
-                  className='absolute top-2 right-2 font-mono bg-[#FFFFFF] text-black p-2 text-sm rounded-full cursor-pointer hover:bg-[#DB4444]'
+                  className={`absolute top-2 right-2 font-mono bg-[#FFFFFF] text-black p-2 text-sm rounded-full cursor-pointer hover:bg-[#DB4444]`}
                   onClick={() => handleToFavorite(index)}
                 >
                   <GrFavorite className='hover:text-white' />

@@ -22,9 +22,9 @@ const WishlistProduct = ({
   return (
     <div className='w-full h-full flex items-center justify-center mt-10'>
       {wishListItems.length === 0 ? (
-        <div className='w-[80%] h-[340px] flex items-center justify-center gap-8 text-2xl'>
+        <div className='w-[80%] h-[340px] flex items-center justify-center gap-8 text-2xl border rounded-xl'>
           <BsFillCartXFill className='text-7xl bg-[#DB4444] text-white rounded-xl p-2' />
-          <p className='p-2 rounded-xl border px-8'>No Favorite Item</p>
+          <p className='p-2 rounded-xl border px-8'>No Favorite Item Added</p>
         </div>
       ) : (
         <div className='w-[80%] h-full flex flex-col gap-4'>
