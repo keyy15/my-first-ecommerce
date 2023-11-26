@@ -33,10 +33,23 @@ const App = () => {
     fetchProducts()
   }, [])
 
-  //add to wishlist test
+  //add to wishlist
   const [wishListItems, setWishlistItems] = useState([])
   const addToWishlist = item => {
-    setWishlistItems(prvItems => [...prvItems, item])
+
+    // Check if the item is already in the wishlist
+    const isAlreadyInWishlist = wishListItems.some(
+      wishlistItem => wishlistItem.id === item.id
+    )
+
+    // If it's not already in the wishlist, add it
+    if (!isAlreadyInWishlist) {
+      setWishlistItems(prevItems => [...prevItems, item])
+    } else {
+      // Handle the case where the item is already in the wishlist (e.g., show a message)
+      alert('Item is already in the wishlist')
+    }
+    
   }
 
   //add to cart test
@@ -144,6 +157,7 @@ const App = () => {
               handleViewMoreProducts={handleViewMoreProducts}
               getVisibleItems={getVisibleItems}
               handleDeleteFromWishlist={handleDeleteFromWishlist}
+              visibleItemCount={visibleItemCount}
             />
           }
         />

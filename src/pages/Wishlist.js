@@ -5,7 +5,9 @@ import JustForYou from '../components/JustForYou'
 const Wishlist = ({
   wishListItems,
   handleViewMoreProducts,
-  handleDeleteFromWishlist
+  handleDeleteFromWishlist,
+  productsAPIs,
+  visibleItemCount
 }) => {
   return (
     <div>
@@ -13,6 +15,8 @@ const Wishlist = ({
         wishListItems={wishListItems}
         handleDeleteFromWishlist={handleDeleteFromWishlist}
         handleViewMoreProducts={handleViewMoreProducts}
+        productsAPIs={productsAPIs}
+        visibleItemCount={visibleItemCount}
       />
       <JustForYou />
     </div>

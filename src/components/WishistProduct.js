@@ -5,11 +5,12 @@ import { BsFillCartXFill } from 'react-icons/bs'
 const WishlistProduct = ({
   wishListItems,
   handleViewMoreProducts,
-  handleDeleteFromWishlist
+  handleDeleteFromWishlist,
+  productsAPIs,
+  visibleItemCount
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showAll, setShowAll] = useState(false)
-  const [visibleItemCount, setVisibleItemCount] = useState(4)
 
   const getVisibleItems = () => {
     if (showAll) {
@@ -90,9 +91,9 @@ const WishlistProduct = ({
               className='bg-[#DB4444] px-12 py-3 text-sm text-white rounded font-mono'
               onClick={handleViewMoreProducts}
             >
-              {visibleItemCount === wishListItems.length
-                ? 'View More Products'
-                : 'Hide'}
+            {visibleItemCount < wishListItems.length
+              ? 'View More Products'
+              : 'Hide'}
             </button>
           </div>
         </div>
