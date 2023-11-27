@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { MdDelete } from 'react-icons/md'
 import { BsFillCartXFill } from 'react-icons/bs'
 
@@ -6,7 +6,6 @@ const WishlistProduct = ({
   wishListItems,
   handleViewMoreProducts,
   handleDeleteFromWishlist,
-  productsAPIs,
   visibleItemCount
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -1,7 +1,17 @@
-import React from 'react'
-import Test from '../assets/amazone.webp'
+import React, { useState } from 'react'
 
-const CartProducts = () => {
+const CartProducts = ({ cartItems }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [showAll, setShowAll] = useState(false)
+
+  const getVisibleItems = () => {
+    if (showAll) {
+      return cartItems
+    } else {
+      return cartItems.slice(0, cartItems)
+    }
+  }
+
   return (
     <div className='w-full h-full flex items-center justify-center'>
       <div className='w-[80%] flex flex-col items-center font-medium'>
@@ -19,38 +29,31 @@ const CartProducts = () => {
               <li className='w-[25%] text-center'>Subtotal</li>
             </ul>
           </div>
-          <div className='w-full h-full flex items-center justify-center bg-white rounded-sm py-4 shadow mt-10'>
-            <div className='w-full h-full flex items-center justify-around'>
-              <div className='w-[25%] text-center flex items-center justify-center gap-2'>
-                <img src={Test} alt='' className='w-16 h-14 rounded' />
-                <p>LCD Monitor</p>
+          {getVisibleItems().map((item, index) => (
+            <div
+              className='w-full h-full flex items-center justify-center bg-white rounded-sm py-4 shadow mt-10'
+              key={index}
+            >
+              <div className='w-full h-full flex items-center justify-around'>
+                <div className='w-[25%] text-center flex items-center justify-center gap-2'>
+                  <img
+                    src={`http://localhost:90/php-backend/uploaded/${item.pro_img}`}
+                    alt=''
+                    className='w-16 h-14 rounded'
+                  />
+                  <p>{item.pro_name}</p>
+                </div>
+                <div className='w-[25%] text-center'>{item.pro_price}</div>
+                <div className='w-[25%] text-center'>
+                  <input
+                    type='number'
+                    className='w-20 h-10 focus:outline-none border-2 rounded-md text-center'
+                  />
+                </div>
+                <div className='w-[25%] text-center'>$650.00</div>
               </div>
-              <div className='w-[25%] text-center'>$650.00</div>
-              <div className='w-[25%] text-center'>
-                <input
-                  type='number'
-                  className='w-20 h-10 focus:outline-none border-2 rounded-md text-center'
-                />
-              </div>
-              <div className='w-[25%] text-center'>$650.00</div>
             </div>
-          </div>
-          <div className='w-full h-full flex items-center justify-center bg-white rounded-sm py-4 shadow mt-10'>
-            <div className='w-full h-full flex items-center justify-around'>
-              <div className='w-[25%] text-center flex items-center justify-center gap-2'>
-                <img src={Test} alt='' className='w-16 h-14 rounded' />
-                <p>LCD Monitor</p>
-              </div>
-              <div className='w-[25%] text-center'>$650.00</div>
-              <div className='w-[25%] text-center'>
-                <input
-                  type='number'
-                  className='w-20 h-10 focus:outline-none border-2 rounded-md text-center'
-                />
-              </div>
-              <div className='w-[25%] text-center'>$650.00</div>
-            </div>
-          </div>
+          ))}
         </div>
         <div className='w-full h-full flex items-center justify-between mt-6'>
           <button
@@ -82,7 +85,12 @@ const CartProducts = () => {
               <p>Total: </p>
               <p>$1,420.00</p>
             </div>
-            <button className='text-white bg-[#DB4444] py-2 px-10 rounded' onClick={() => alert('process to checkout')}>Process to checkout</button>
+            <button
+              className='text-white bg-[#DB4444] py-2 px-10 rounded'
+              onClick={() => alert('process to checkout')}
+            >
+              Process to checkout
+            </button>
           </div>
         </div>
       </div>

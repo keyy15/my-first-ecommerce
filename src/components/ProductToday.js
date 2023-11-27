@@ -12,8 +12,7 @@ const ProductToday = ({
   countDown,
   getVisibleItems,
   handleViewMoreProducts,
-  visibleItemCount,
-  wishListItems
+  visibleItemCount
 }) => {
   const [isHovered, setIsHovered] = useState(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -34,17 +33,17 @@ const ProductToday = ({
     addToWishlist(itemAddToFavorite)
   }
 
-  const handleAddToCart = () => {
-    const itemToCart = productsAPIs[currentIndex]
+  const handleAddToCart = index => {
+    const itemToCart = productsAPIs[index]
     addToCartItems(itemToCart)
   }
 
   const handleNextPrv = () => {
-    alert("Next")
+    alert('Next')
   }
 
   const handleBackPrv = () => {
-    alert("Back")
+    alert('Back')
   }
 
   return (

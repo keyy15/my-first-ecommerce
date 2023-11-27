@@ -46,7 +46,7 @@ const App = () => {
       setWishlistItems(prevItems => [...prevItems, item])
     } else {
       // Handle the case where the item is already in the wishlist (e.g., show a message)
-      Swal.fire("Item is already in the wishlist");
+      Swal.fire('Item is already in the wishlist')
     }
   }
 
@@ -54,9 +54,10 @@ const App = () => {
   const [cartItems, setCartItems] = useState([])
   const addToCartItems = item => {
     const isAlreadyInCart = cartItems.some(cardItem => cardItem.id === item.id)
-    if(!isAlreadyInCart){
+    
+    if (!isAlreadyInCart) {
       setCartItems(prvItems => [...prvItems, item])
-    }else{
+    } else {
       Swal.fire('Item is already in cart')
     }
   }
@@ -124,6 +125,9 @@ const App = () => {
     setWishlistItems(updatedWishlist)
   }
 
+  //get current index
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   return (
     <Router>
       <TopNavbar />
@@ -160,7 +164,6 @@ const App = () => {
               handleViewMoreProducts={handleViewMoreProducts}
               getVisibleItems={getVisibleItems}
               handleDeleteFromWishlist={handleDeleteFromWishlist}
-              visibleItemCount={visibleItemCount}
             />
           }
         />

@@ -7,7 +7,9 @@ const Wishlist = ({
   handleViewMoreProducts,
   handleDeleteFromWishlist,
   productsAPIs,
-  visibleItemCount
+  visibleItemCount,
+  getVisibleItems,
+  currentIndex
 }) => {
   return (
     <div>
@@ -17,6 +19,7 @@ const Wishlist = ({
         handleViewMoreProducts={handleViewMoreProducts}
         productsAPIs={productsAPIs}
         visibleItemCount={visibleItemCount}
+        getVisibleItems={getVisibleItems}
       />
       <JustForYou />
     </div>
