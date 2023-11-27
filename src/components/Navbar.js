@@ -111,7 +111,7 @@ const Navbar = ({ wishListItems, cartItems, products }) => {
             <ul
               className={`${
                 subHidden ? '' : 'hidden'
-              } absolute right-0 top-full w-[280px] py-4 rounded text-md flex flex-col items-start justify-between gap-2 font-mono text-[20px] text-white border bg-black bg-opacity-25 backdrop-blur-md mt-2`}
+              } absolute right-0 top-full w-[280px] py-4 rounded-lg text-md flex flex-col items-start justify-between gap-2 font-mono text-[20px] text-white border bg-black bg-opacity-25 backdrop-blur-md mt-2`}
             >
               {subOnUser.map((item, index) => (
                 <li

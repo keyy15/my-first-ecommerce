@@ -91,9 +91,7 @@ const WishlistProduct = ({
               className='bg-[#DB4444] px-12 py-3 text-sm text-white rounded font-mono'
               onClick={handleViewMoreProducts}
             >
-            {visibleItemCount < wishListItems.length
-              ? 'View More Products'
-              : 'Hide'}
+              {visibleItemCount <= 4 ? 'View more products' : 'Hide'}
             </button>
           </div>
         </div>

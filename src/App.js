@@ -13,8 +13,9 @@ import Singup from './pages/Singup'
 import Footer from './components/Footer'
 import Login from './pages/Login'
 import Wishlist from './pages/Wishlist'
-import AddToCart from './pages/AddToCart'
+import AddToCart from './pages/Cart'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const App = () => {
   //fetch data from api
@@ -36,8 +37,6 @@ const App = () => {
   //add to wishlist
   const [wishListItems, setWishlistItems] = useState([])
   const addToWishlist = item => {
-
-    // Check if the item is already in the wishlist
     const isAlreadyInWishlist = wishListItems.some(
       wishlistItem => wishlistItem.id === item.id
     )
@@ -47,15 +46,19 @@ const App = () => {
       setWishlistItems(prevItems => [...prevItems, item])
     } else {
       // Handle the case where the item is already in the wishlist (e.g., show a message)
-      alert('Item is already in the wishlist')
+      Swal.fire("Item is already in the wishlist");
     }
-    
   }
 
   //add to cart test
   const [cartItems, setCartItems] = useState([])
   const addToCartItems = item => {
-    setCartItems(prvItems => [...prvItems, item])
+    const isAlreadyInCart = cartItems.some(cardItem => cardItem.id === item.id)
+    if(!isAlreadyInCart){
+      setCartItems(prvItems => [...prvItems, item])
+    }else{
+      Swal.fire('Item is already in cart')
+    }
   }
 
   //Countdown
