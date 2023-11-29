@@ -126,7 +126,7 @@ const ProductToday = ({
                 {isHovered === index && (
                   <p
                     className='absolute bottom-0 text-center bg-black text-white w-full rounded-b p-1 cursor-pointer text-sm'
-                    onClick={handleAddToCart}
+                    onClick={() => handleAddToCart(index)}
                   >
                     Add To Cart
                   </p>

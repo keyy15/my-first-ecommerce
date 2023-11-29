@@ -53,12 +53,14 @@ const App = () => {
   //add to cart test
   const [cartItems, setCartItems] = useState([])
   const addToCartItems = item => {
-    const isAlreadyInCart = cartItems.some(cardItem => cardItem.id === item.id)
-    
+    const isAlreadyInCart = cartItems.some(cartItem => cartItem.id === item.id)
+
+    // If it's not already in the wishlist, add it
     if (!isAlreadyInCart) {
-      setCartItems(prvItems => [...prvItems, item])
+      setCartItems(prevItems => [...prevItems, item])
     } else {
-      Swal.fire('Item is already in cart')
+      // Handle the case where the item is already in the wishlist (e.g., show a message)
+      Swal.fire('Item is already in the cart')
     }
   }
 
@@ -167,7 +169,14 @@ const App = () => {
             />
           }
         />
-        <Route path='/addtocart' element={<AddToCart />} />
+        <Route
+          path='/addtocart'
+          element={
+            <AddToCart
+              cartItems={cartItems}
+            />
+          }
+        />
       </Routes>
       <Footer />
     </Router>

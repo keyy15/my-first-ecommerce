@@ -9,7 +9,6 @@ const Wishlist = ({
   productsAPIs,
   visibleItemCount,
   getVisibleItems,
-  currentIndex
 }) => {
   return (
     <div>
