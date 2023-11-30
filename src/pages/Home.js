@@ -19,7 +19,8 @@ const Home = ({
   handleViewMoreProducts,
   getVisibleItems,
   visibleItemCount,
-  wishListItems
+  wishListItems,
+  generateRandomCoupon
 }) => {
   return (
     <div>
@@ -41,6 +42,7 @@ const Home = ({
         getVisibleItems={getVisibleItems}
         visibleItemCount={visibleItemCount}
         wishListItems={wishListItems}
+        generateRandomCoupon={generateRandomCoupon}
       />
       <Category />
       <ProductThisMonth />

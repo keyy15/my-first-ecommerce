@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsFillCartXFill } from 'react-icons/bs'
 import { FiSearch } from 'react-icons/fi'
+import { IoCloseCircle } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
+import '../styles/global.css'
 
-const CartProducts = ({ cartItems }) => {
+const CartProducts = ({
+  cartItems,
+  handleRemoveFromAddToCart,
+  generateRandomCoupon
+}) => {
   const [quantity, setQuantity] = useState({})
 
   const navigate = useNavigate()
@@ -24,10 +30,15 @@ const CartProducts = ({ cartItems }) => {
     return cartItems.reduce((total, item) => total + calculateSubtotal(item), 0)
   }
 
+  const handleApplyCouponCode = () => {
+    const couponCode = generateRandomCoupon()
+    console.log('Generate Coupon Code', couponCode)
+  }
+
   return (
     <div className='w-full h-full flex items-center justify-center'>
       {cartItems.length === 0 ? (
-        <div className='w-[80%] h-[340px] flex items-center justify-center gap-8 text-2xl border rounded-xl'>
+        <div className='w-[80%] h-[340px] flex items-center justify-center gap-8 text-2xl border rounded-xl mt-10'>
           <BsFillCartXFill className='text-7xl bg-[#DB4444] text-white rounded-xl p-2' />
           <p className='p-2 rounded-xl border px-8'>No Cart Item Added</p>
         </div>
@@ -49,7 +60,7 @@ const CartProducts = ({ cartItems }) => {
             </div>
             {cartItems.map((item, index) => (
               <div
-                className='w-full h-full flex items-center justify-center bg-white rounded-sm py-4 shadow mt-10'
+                className={`w-full h-full flex items-center justify-center bg-white rounded-sm py-4 shadow mt-10 relative`}
                 key={index}
               >
                 <div className='w-full h-full flex items-center justify-around'>
@@ -81,6 +92,10 @@ const CartProducts = ({ cartItems }) => {
                     ${calculateSubtotal(item)}
                   </div>
                 </div>
+                <IoCloseCircle
+                  className='absolute -top-2.5 -right-2.5 text-xl text-[#DB4444] hover:text-black'
+                  onClick={() => handleRemoveFromAddToCart(index)}
+                />
               </div>
             ))}
           </div>
@@ -109,7 +124,7 @@ const CartProducts = ({ cartItems }) => {
               </div>
               <button
                 className='bg-[#DB4444] text-white p-2 rounded px-8 text-sm'
-                onClick={() => alert('apply coupon')}
+                onClick={handleApplyCouponCode}
               >
                 Apply Coupon
               </button>

@@ -1,10 +1,14 @@
 import React from 'react'
 import CartProducts from '../components/CartProducts'
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, handleRemoveFromAddToCart, generateRandomCoupon }) => {
   return (
     <div>
-      <CartProducts cartItems={cartItems} />
+      <CartProducts
+        cartItems={cartItems}
+        handleRemoveFromAddToCart={handleRemoveFromAddToCart}
+        generateRandomCoupon={generateRandomCoupon}
+      />
     </div>
   )
 }

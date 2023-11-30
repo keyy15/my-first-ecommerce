@@ -127,8 +127,46 @@ const App = () => {
     setWishlistItems(updatedWishlist)
   }
 
+  //handle remove item from add to cart
+  const handleRemoveFromAddToCart = index => {
+    const updatedCart = [...cartItems]
+    updatedCart.splice(index, 1)
+    setCartItems(updatedCart)
+  }
+
   //get current index
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  //random coupon
+  //not use right now
+  const generateRandomCoupon = percentage => {
+    const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const couponLength = 6
+
+    // Calculate the number of characters to represent the percentage
+    const percentageChars = Math.ceil((percentage / 100) * couponLength)
+
+    let couponCode = ''
+
+    for (let i = 0; i < couponLength - percentageChars; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length)
+      couponCode += characters.charAt(randomIndex)
+    }
+
+    // Add characters to represent the percentage
+    for (let i = 0; i < percentageChars; i++) {
+      const digit = Math.floor(Math.random() * 10)
+      couponCode += digit.toString()
+    }
+
+    // Shuffle the coupon code characters
+    couponCode = couponCode
+      .split('')
+      .sort(() => Math.random() - 0.5)
+      .join('')
+
+    return couponCode
+  }
 
   return (
     <Router>
@@ -174,6 +212,8 @@ const App = () => {
           element={
             <AddToCart
               cartItems={cartItems}
+              handleRemoveFromAddToCart={handleRemoveFromAddToCart}
+              generateRandomCoupon={generateRandomCoupon}
             />
           }
         />
