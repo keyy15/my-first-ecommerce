@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/my-first-ecommerce/static/css/main.acfacbef.css",
+    "main.js": "/my-first-ecommerce/static/js/main.da369f39.js",
+    "static/media/JBL.jpg": "/my-first-ecommerce/static/media/JBL.86175e91fc21b84c4516.jpg",
+    "static/media/QR.png": "/my-first-ecommerce/static/media/QR.ed8c32532cc3e4aea9bc.png",
+    "static/media/womancollection.jpg": "/my-first-ecommerce/static/media/womancollection.bea94b1b021127bdd1d8.jpg",
+    "static/media/controller.png": "/my-first-ecommerce/static/media/controller.948f8b9f6c8fb443ac5b.png",
+    "static/media/cover.png": "/my-first-ecommerce/static/media/cover.ada46ddbaea1cebbdd2a.png",
+    "static/media/google.png": "/my-first-ecommerce/static/media/google.eb4f576bd3f0f2c0c6f8.png",
+    "static/media/keyboard.png": "/my-first-ecommerce/static/media/keyboard.b185be6f048a831012df.png",
+    "static/media/gucci.jpg": "/my-first-ecommerce/static/media/gucci.c8457969d42766e7dbb1.jpg",
+    "static/media/Frame 560.png": "/my-first-ecommerce/static/media/Frame 560.bf0c9247f2916d131741.png",
+    "static/media/monitor.png": "/my-first-ecommerce/static/media/monitor.4acfd93559b9a172c14c.png",
+    "static/media/chair.png": "/my-first-ecommerce/static/media/chair.3b883c902040a7c09bf8.png",
+    "static/media/amazone.webp": "/my-first-ecommerce/static/media/amazone.95a4e64d36a319d58226.webp",
+    "static/media/ps5.jpg": "/my-first-ecommerce/static/media/ps5.773abbc65743050320c9.jpg",
+    "static/media/Appstore.png": "/my-first-ecommerce/static/media/Appstore.5b18034505ec5d3a6ea2.png",
+    "static/media/SingupWithGoogle.png": "/my-first-ecommerce/static/media/SingupWithGoogle.445fbfb0463129e5b5c2.png",
+    "index.html": "/my-first-ecommerce/index.html",
+    "main.acfacbef.css.map": "/my-first-ecommerce/static/css/main.acfacbef.css.map",
+    "main.da369f39.js.map": "/my-first-ecommerce/static/js/main.da369f39.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.acfacbef.css",
+    "static/js/main.da369f39.js"
+  ]
+}
