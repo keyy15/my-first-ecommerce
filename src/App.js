@@ -23,7 +23,7 @@ const App = () => {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        'http://localhost:90/php-backend/get-product.php'
+        'https://github.com/keyy15/php-Backend/blob/main/get-product.php'
       )
       setProductsAPIs(response.data)
     } catch (error) {
@@ -133,9 +133,6 @@ const App = () => {
     updatedCart.splice(index, 1)
     setCartItems(updatedCart)
   }
-
-  //get current index
-  const [currentIndex, setCurrentIndex] = useState(0)
 
   //random coupon
   //not use right now

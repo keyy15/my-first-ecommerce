@@ -44,7 +44,7 @@ const CartProducts = ({
         </div>
       ) : (
         <div className='w-[80%] flex flex-col items-center font-medium'>
-          <div className='w-full h-[140px] flex items-center'>
+          <div className='w-full h-[140px] flex items-center text-sm'>
             <p className='text-[#808080]'>
               Home / <span className='text-black'>Cart</span>
             </p>
